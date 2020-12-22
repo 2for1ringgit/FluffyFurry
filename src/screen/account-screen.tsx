@@ -1,29 +1,29 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import AccInfo from '../component/AccInfo';
 import {Icon} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 
 const accountscreen = () => {
-  const navigation = useNavigation()
-  function signOut () {
+  const navigation = useNavigation();
+  const signOut = () => {
     auth()
-  .signOut()
-  .then(() => console.log('User signed out!'));
-  }
+      .signOut()
+      .then(() => console.log('hey'));
+    // navigation.navigate('LoginScreen'));
+  };
   return (
-    <View style={{marginHorizontal: 16,marginTop: 16}}>
-      <View style={{flexDirection:'row'}}>
+    <View style={{marginHorizontal: 16, marginTop: 16}}>
+      <View style={{flexDirection: 'row'}}>
         <Icon name="person-circle-outline" size={50} type="ionicon" />
 
         <View style={{flexDirection: 'column'}}>
-        <Text style={{fontWeight:'bold', fontSize: 18}}>Username</Text>
-        <View style={{flexDirection:'row', alignItems:'center'}}>
-
-          <Text>Chỉnh sửa tài khoản</Text>
-          <Icon name="keyboard-arrow-right" type="material" />
-        </View>
+          <Text style={{fontWeight: 'bold', fontSize: 18}}>Tuấn Nguyễn</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Text>Chỉnh sửa tài khoản</Text>
+            <Icon name="keyboard-arrow-right" type="material" />
+          </View>
 
           <Icon></Icon>
         </View>
@@ -96,7 +96,12 @@ const accountscreen = () => {
           icontype="material-community"
           name="Lịch sử cắt"
         />
-        <AccInfo iconname="log-out" icontype="entypo" name="Đăng xuất"  />
+        <AccInfo
+          iconname="log-out"
+          icontype="entypo"
+          name="Đăng xuất"
+          navigateTo={() => navigation.navigate('LoginScreen')}
+        />
       </View>
     </View>
   );

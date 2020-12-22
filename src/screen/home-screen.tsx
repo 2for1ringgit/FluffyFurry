@@ -8,7 +8,7 @@ import {Icon} from 'react-native-elements';
 import HomeIcon from '../component/HomeIcon';
 import auth from '@react-native-firebase/auth';
 
-const slide = [
+const slide = [ 
   'https://file.hstatic.net/1000238938/file/post_-_november-01_grande.png',
   'https://64.media.tumblr.com/4f53ec035175ac534921f3ef299d0173/tumblr_ozpkmqtlXf1vkuoq9o1_1280.jpg',
   'https://www.chamsocpet.com/wp-content/uploads/2019/09/nhung-loi-ich-cua-viec-spa-cho-meo-tai-petcare.jpg',
@@ -54,14 +54,14 @@ const homescreen = () => {
       <View style={{flexDirection: 'row',marginTop:8,paddingHorizontal:16,backgroundColor:'black',paddingBottom: 64,paddingTop:8}}>
         <Icon name="person-circle-outline" size={50} type="ionicon" color='white' />
         <View style={{flexDirection: 'column'}}>
-          <Text style={{fontWeight: 'bold', fontSize: 18, color:'white'}}>Username</Text>
+          <Text style={{fontWeight: 'bold', fontSize: 18, color:'white'}}>Tuấn Nguyễn</Text>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Text style={{color:'white'}}>Chỉnh sửa tài khoản</Text>
             <Icon name="keyboard-arrow-right" type="material" />
           </View>
         </View>
       </View>
-     
+      
       <View
         style={{
           flexDirection: 'row',

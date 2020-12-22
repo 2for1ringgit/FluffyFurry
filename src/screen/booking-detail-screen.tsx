@@ -29,7 +29,7 @@ const bookingdetailscreen = ({route}) => {
       location: location,
     });
   }
-  const day = ['hôm nay 10/12', 'ngày mai 11/12', 'ngày kia 12/12'];
+  const day = ['hôm nay 11/12', 'ngày mai 12/12', 'ngày kia 13/12'];
   const time = [
     '8h00',
     '8h30',

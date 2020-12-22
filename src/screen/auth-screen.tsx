@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import {Text,View,Image,Button,TextInput,TouchableOpacity} from 'react-native'
+import {Text,View,Image,Button,TextInput,TouchableOpacity,Alert} from 'react-native'
 import auth from '@react-native-firebase/auth'
 import {useNavigation} from '@react-navigation/native'
 import LinearGradient from 'react-native-linear-gradient'
@@ -17,6 +17,7 @@ const authscreen = () => {
           navigation.navigate('HomeScreen')
         } catch (error) {
           console.log('Invalid code.');
+          Alert.alert("error")
         }
       }
     return (
@@ -31,7 +32,7 @@ const authscreen = () => {
             <Text style={{color:'gray', fontSize: 20,marginVertical: 16,alignSelf: 'center'}}>Nhập mã xác nhận</Text>
             <View style={{flexDirection:'row'}}>
 
-            <TextInput value={code} onChangeText={text=> setCode(text)} style={{backgroundColor:'white',marginHorizontal: 8,flex: 1,borderRadius: 5,textAlign: 'center'}} maxLength={6} keyboardType='numeric' />
+            <TextInput value={code} onChangeText={text=> setCode(text)} style={{backgroundColor:'white',marginHorizontal: 8,flex: 1,borderRadius: 5,textAlign: 'center',fontSize:20,fontWeight:'bold',letterSpacing: 20}} maxLength={6} keyboardType='numeric' />
         
             </View>
             <Text style={{color:'gray',marginVertical: 16,textAlign: 'center'}}>Bạn hãy chọn "Xác thực" để tiến hành xác thực tài khoản đăng nhập vào ứng dụng của Fluffy</Text>

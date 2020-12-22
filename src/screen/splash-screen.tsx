@@ -80,12 +80,11 @@ const splashscreen = () => {
       borderRadius: 5,
       
     }}
-    onPress={navigation.navigate('LoginScreen')}
+    onPress={()=>navigation.navigate('LoginScreen')}
     >
       <Text style={{fontWeight: 'bold', fontSize: 16}}>Đăng nhập bằng số điện thoại</Text>
   </TouchableOpacity>
-          {/* <NavButton title="Đăng nhập bằng số điện thoại" screenName="LoginScreen" /> */}
-          <Text style={[styles.text, {marginTop: 16}]} onPress={navigation.navigate("app")}>Bỏ qua đăng nhập</Text>
+          <Text style={[styles.text, {marginTop: 16}]} onPress={()=>navigation.navigate("app")}>Bỏ qua đăng nhập</Text>
           <Text style={{color: 'gray', marginBottom: 4, marginTop: 20}}>
             Copyright 2015 Fluffy Inc. All right Reserved
           </Text>

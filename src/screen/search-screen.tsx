@@ -20,7 +20,7 @@ const searchscreen = ({cartData}) => {
   const navigation = useNavigation();
   const [product, setProduct] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   const handleData = (searchValue) => {
     let searchData = product.filter(({name}) => name.toLowerCase().indexOf(searchValue) !== -1)
     return searchData
@@ -52,24 +52,29 @@ const searchscreen = ({cartData}) => {
   }, []);
   return (
     <View style={{backgroundColor: 'white'}}>
-      <View 
-        style={{
-          marginHorizontal: 16,
-          paddingHorizontal: 16,
-          backgroundColor: 'rgb(227, 226, 225)',
-          borderRadius: 5,
-          borderWidth: 1,
-          width: '80%',
-          flexDirection:'row',
-          alignItems:'center',
-          justifyContent:'space-between'
-        }}>
+      <View  style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center',marginBottom:16,marginTop:8}}
+        >
+           <Icon
+          name="ios-chevron-back-outline"
+          type="ionicon"
+          color="rgb(250, 85, 15)"
+          onPress={navigation.goBack}
+          iconStyle={{fontSize: 24}}
+        />
         <TextInput
-          placeholder="Nhập tên sản phẩm"
+          placeholder="Nhập tên sản phẩm" style={{
+            backgroundColor: 'rgba(237, 236, 232,.9)',
+            paddingHorizontal: 8,
+            width: '80%',
+            flexDirection: 'row',
+            paddingVertical: 8,
+            paddingLeft: 16,
+            borderRadius: 10,
+          }}
           onChangeText={(value) => {searchItem(value.toLowerCase())}}
           value={searchText}
         />
-        <Icon name='close' type='material' onPress={() => searchItem('')} />
+        {/* <Icon name='close' type='material' onPress={() => searchItem('')} /> */}
       </View>
       <ScrollView>
         <View>

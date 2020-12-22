@@ -24,7 +24,7 @@ const storescreen = ({cartData}) => {
     
   }
   // const scroll = document.scrollingElement.scrollTop;
-  const slide = [
+  const slide = [ 
     'https://file.hstatic.net/1000238938/file/post_-_november-01_grande.png',
     'https://bizweb.dktcdn.net/100/229/172/articles/33785635-2094935567430911-6656139864922128384-n.png?v=1527870952660',
     'https://bizweb.dktcdn.net/100/229/172/articles/bai-13-4-19-khai-truong-spa-khuong-dinh.jpg?v=1555094833827',

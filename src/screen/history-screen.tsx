@@ -53,7 +53,7 @@ const historyscreen = ({route}) => {
         </View>
         <Text style={{textDecorationLine:'underline',alignSelf:'center', marginTop:16}}>Hủy lịch đặt</Text>
       </View>
-      <Text style={{textTransform:'uppercase',fontWeight:'bold', letterSpacing:.5,fontSize:20,marginHorizontal:16,marginTop:16}}>Lịch sử cắt tóc của bé</Text>
+      <Text style={{textTransform:'uppercase',fontWeight:'bold', letterSpacing:.5,fontSize:20,marginHorizontal:16,marginTop:16}}>Lịch sử cắt tóc</Text>
 
     </View>
   );

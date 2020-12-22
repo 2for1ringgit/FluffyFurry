@@ -7,20 +7,48 @@ import {
   CheckBox,
   ScrollView,
   FlatList,
+  Alert
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import ItemCounter from '../component/ItemCounter';
-import {connect} from 'react-redux';
+import {connect,useDispatch} from 'react-redux';
 import CircleCheckBox, {LABEL_POSITION} from 'react-native-circle-checkbox'; 
 import Header from '../component/Header';
 const cartscreen = ({cartData}) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch()
+  const remove = (product) => {
+    dispatch({
+      type: "DECREMENT",
+      payload: product,
+    });
+  };
+  const deleteItem = (product) => {
+    dispatch({
+      type:'DELETE',
+      payload:product
+    })
+  }
   console.log(cartData);
+  function success () {
+    Alert.alert("Đặt hàng thành công")
 
+  }
+  const totalPrice = (data) => {
+    let total = 0;
+    let shippingfee= 15;
+    data.map ((value) => (total += value.productDetail.price * value.count))
+    if(total > 500) {
+      let shippingfee = 0; 
+    }
+    else
+    total += shippingfee
+    return total
+  }
   const [isSelected, setSelection] = useState(false);
-  const [value, onChangeText] = React.useState('Nhập địa chỉ giao hàng');
+  const [value, onChangeText] = React.useState('');
   return (
     <View style={{height:"100%", backgroundColor:'white'}}>
       <View
@@ -92,17 +120,20 @@ const cartscreen = ({cartData}) => {
                       }}>
                       {item.productDetail.name}
                     </Text>
+                    <Text>
+                      Số lượng: {item.count}
+                    </Text>
                     <Text
                       style={{
                         color: 'rgb(250, 85, 15)',
                         fontWeight: 'bold',
                         paddingTop: 30,
                       }}>
-                      đ{item.productDetail.price}.000
+                      đ{item.productDetail.price}.000 
                     </Text>
                   </View>
-                  <TouchableOpacity style={{backgroundColor:'rgb(247, 96, 96)', padding:4,borderRadius:50,}}>
-                    <Text style={{color:'white'}}>X</Text>
+                  <TouchableOpacity style={{backgroundColor:'rgb(247, 96, 96)', padding:4,borderRadius:50,}} onPress={() => deleteItem(item.productDetail)}>
+                    <Icon name='close' type='evilicon' color="white"/>
                   </TouchableOpacity>
                 </View>
               );
@@ -125,14 +156,14 @@ const cartscreen = ({cartData}) => {
   labelPosition={LABEL_POSITION.RIGHT}
   label="Thanh toán trực tiếp"
 />
-          <CircleCheckBox
+          {/* <CircleCheckBox
   checked={false}
   onToggle={(checked) => console.log('My state is: ', checked)}
   labelPosition={LABEL_POSITION.RIGHT}
   label="Thanh toán qua TOPUP"
-/>
+/> */}
         </View>
-        <TextInput style={{backgroundColor:'rgb(222, 217, 217)',paddingHorizontal:16,borderRadius:5}} onChangeText={(text) => onChangeText(text)} value={value} />
+        <TextInput style={{backgroundColor:'rgb(222, 217, 217)',paddingHorizontal:16,borderRadius:5,marginTop:16}} onChangeText={(text) => onChangeText(text)} value={value} placeholder="Nhập địa chỉ giao hàng" />
       {/* <View style={{flexDirection: 'row',alignItems:'center'}}>
         <CheckBox value={isSelected} onValueChange={setSelection} />
         <Text>Ship nhanh phí ship không đổi</Text>
@@ -150,9 +181,9 @@ const cartscreen = ({cartData}) => {
         }}>
         <View style={{flex:1,paddingBottom:8}}>
           <Text style={{textAlign:'center'}}>Tổng tiền</Text>
-          <Text style={{textAlign:'center',color:'rgb(250, 85, 15)',fontWeight:'bold',fontSize:18}}>đ400.000</Text>
+          <Text style={{textAlign:'center',color:'rgb(250, 85, 15)',fontWeight:'bold',fontSize:18}}>đ{totalPrice(cartData,'15')}.000</Text>
         </View>
-        <View style={{flex:1,backgroundColor:'rgb(250, 85, 15)', alignItems:'center',justifyContent:'center'}}>
+        <View style={{flex:1,backgroundColor:'rgb(250, 85, 15)', alignItems:'center',justifyContent:'center'}} >
           <Text style={{color:'white',fontWeight:'bold',fontSize: 20}}>Đặt hàng</Text>
         </View>
       </View>
@@ -161,6 +192,7 @@ const cartscreen = ({cartData}) => {
   );
 };
 const mapStateToProps = (state) => ({
+  
   cartData: state.cart,
 });
 

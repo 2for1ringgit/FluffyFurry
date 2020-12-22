@@ -6,6 +6,7 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  Alert
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {
@@ -31,7 +32,7 @@ const loginscreen = () => {
     }
   }
   async function signInWithPhoneNumber(phoneNumber) {
-    const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+    const confirmation = await auth().signInWithPhoneNumber('+84' + phoneNumber);
     setConfirm(confirmation);
     // navigation.navigate('AuthScreen')
     console.log(phoneNum);
